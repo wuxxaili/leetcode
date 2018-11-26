@@ -46,7 +46,6 @@ nums = [3, 4, 2, 5, 7, 9, 10, 14, 11, 5, 7]
 def KthBinarySearch(nums,k,MAX,MIN,LMAX,LMIN):
     ## return the kth element in nums
     if MIN == MAX: return MIN
-    #print k,MAX,MIN,LMAX,LMIN
     median = (MIN + MAX)//2
     s,l,m = 0,0,0
     for num in nums:
@@ -76,3 +75,25 @@ def MedianBinarySearch(nums):
         return KthBinarySearch(nums,n/2,MAX,MIN,MAX,MIN)
     else:
         return 0.5*(KthBinarySearch(nums,n/2,MAX,MIN,MAX,MIN) + KthBinarySearch(nums,n/2-1,MAX,MIN,MAX,MIN))
+
+"""
+   Other's code
+"""
+def KthBS(nums,k,MIN,MAX):
+    ## return the kth element in nums
+    while MIN <= MAX:
+        guess = (MIN + MAX)/2
+        nextLarge = MAX
+        s = 0
+        for num in nums:
+            if num < guess:
+                s += 1
+            else:
+                nextLarge = min(num,nextLarge)
+        if s == k :
+            return nextLarge
+        if s > k :
+            MAX = guess - 1
+        else:
+            MIN = guess + 1
+
