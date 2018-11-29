@@ -84,16 +84,21 @@ def KthBS(nums,k,MIN,MAX):
     while MIN <= MAX:
         guess = (MIN + MAX)/2
         nextLarge = MAX
-        s = 0
+        s,m = 0,0
         for num in nums:
             if num < guess:
                 s += 1
+            elif num == guess:
+                m += 1
             else:
                 nextLarge = min(num,nextLarge)
-        if s == k :
-            return nextLarge
         if s > k :
             MAX = guess - 1
+            continue
+        if s+m > k:
+            return guess
+        if s+m == k:
+            return nextLatge
         else:
             MIN = guess + 1
 

@@ -18,4 +18,22 @@ def pourWater(heights, V, K):
                 index = i
         heights[index] += 1
     return heights
-                    
+
+"""
+## print the land
+nums = [2,1,2,1,3]
+newnums = [2,2,2,2,3]
+n = len(nums)
+
+maxHeight = max(newnums)
+for height in range(maxHeight,0,-1):
+    row = ''
+    for j in range(n):
+        if newnums[j] >= height and nums[j] < height:
+            row += 'w'
+        elif nums[j] >= height:
+            row += '+'
+        else:
+            row += ' '
+    print row
+"""
